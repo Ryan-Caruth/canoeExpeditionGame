@@ -1,0 +1,23 @@
+{
+  "name": "canoeexpeditiongame",
+  "version": "1.0.0",
+  "description": "A text-based interactive game where you must make smart decisions on the water or else...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryan-Caruth/canoeExpeditionGame.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ryan-Caruth/canoeExpeditionGame/issues"
+  },
+  "homepage": "https://github.com/Ryan-Caruth/canoeExpeditionGame#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
