@@ -1,9 +1,10 @@
 let readlineSync = require("readline-sync");
 
 // Wait for user's response.
-let name = readlineSync.question("May I have your first name? ");
-console.log("Hello " + name + "." + " Welcome to either your best canoe expirence or your worst canoe expirence.");
+let name = readlineSync.question('May I have your first name?');
+console.log(`\nHello ${name}. Welcome to either your best canoe expirence or your worst canoe expirence.`);
 
+//Create an array for randomly generated name
 const compName = ["Jack", "Jill", "Fred", "Steve", "John", "Sarah", "Philip",
     "Liana", "Maggie", "Jade", "Jodie", "Hope", "Greg", "Graham", "Cory",
     "Reid", "Patrick", "Sam", "Samatha", "Tobey", "Brian", "Ryan", "Rachel",
@@ -25,9 +26,32 @@ const compName = ["Jack", "Jill", "Fred", "Steve", "John", "Sarah", "Philip",
     "Natalie", "Aurora", "Gracie", "Grace", "Maddison", "Walker", "Alicia",
     "Bella", "Octavia", "Brianna", "Vivian", "Eleanor", "Danica", "Andrea",
     "Morgan", "Serena", "Alexandra", "Mackenzie", "Addison"]
-
 const numOfNames = compName.length
-
 const randomName = Math.floor(numOfNames * Math.random());
+console.log(`\nYour canoe partner for this trip is ${compName[randomName]}.`);
 
-console.log(`Your canoe partner for this trip is ${compName[randomName]}.`);
+//Let the usere choose a canoe
+function canoeQuestion() {
+    const canoeType = ['Recreational Canoe', 'Expedition Canoe'];
+    const type = readlineSync.keyInSelect(canoeType, 'Which type of canoe do you want?');
+
+
+    if (type === 0) {
+        console.log('Great choice guys!!');
+    } else if (type === 1) {
+        console.log('I\'m sorry that canoe has holes in it. Please try again');
+            canoeQuestion()
+    } else {
+        console.log('Invalid choice, try again!');
+            canoeQuestion()
+    }
+};
+canoeQuestion();
+
+console.log('Your canoe is equipped with all of the proper safety gear, looks like you guys know what you\'re doing.');
+
+console.log(`\nFinally you guys have made it to the campsite. Don\'t get to comfy though. You guys are going to be on the water bright and early. Expect to be on the water for at least two days`);
+
+
+
+
