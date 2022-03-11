@@ -19,12 +19,32 @@ app.get('/startGame', (req, res) => {
     );
 });
 
-
-
 app.get('/giveName', (req, res) => {
     let name = req.query.name;
     giveName.name = name;
-    res.send(`Hello ${name}`)
+    res.send(
+      `Hello ${name}. Please go to this link to find out who your canoe partner is curl http://localhost:5000/compName?computerName={Enter '?'}.`
+    );
     console.log(name);
+});
+
+app.get('/compName', (req, res) => {
+    let compName = ["Jack", "Jill", "Fred", "Steve", "John", "Sarah", "Philip", "Liana", "Maggie", "Jade", "Jodie", "Hope", "Greg",
+        "Graham", "Cory", "Reid", "Patrick", "Sam", "Samatha", "Tobey", "Brian", "Ryan", "Rachel", "Elvis", "Sidney", "Lorrie", "Carly", "Jake",
+        "Katie", "Nicole", "Evan", "Tim", "Tom", "Jaden", "Ashley", "Theodore", "Dory", "Jody", "Judy", "Peggy", "Wally", "Wallace", "Jessie", "Tony",
+        "Ethan", "Janette", "Gord", "Jenifer", "Brandon", "Betty", "Mary", "Skyler", "Tucker", "Chelsea", "Ally", "Aidan", "Andrew", "Bailey",
+        "Billy", "Bob", "Catherine", "Hayley", "Annabelle", "Kyle", "Ryder", "Marcus"];
+    let numOfNames = compName.length;
+    let randomName = Math.floor(numOfNames * Math.random());
+    let computerName = req.query.computerName;
+    
+    if (computerName === '?' || computerName === '"?"') {
+        res.send(`Your canoe partner for this trip is ${compName[randomName]}`);
+        console.log(
+          `Your canoe partner for this trip is ${compName[randomName]}.`
+        );
+    } else {
+        res.send("Invalid entry, please enter '?'");
+    }
 });
 
