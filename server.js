@@ -1,7 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
 const { giveName } = require('./index');
-// const readlineSync = require("readline-sync")
 
 const app = express();
 

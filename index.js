@@ -1,7 +1,3 @@
-let readlineSync = require("readline-sync");
-
-
-
 // Wait for user's response.
 // let name = readlineSync.question("May I have your first name?");
 //Create an object for your given name: To be imported into server.js;
