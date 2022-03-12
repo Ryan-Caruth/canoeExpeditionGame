@@ -1,4 +1,6 @@
-// let readlineSync = require("readline-sync");
+let readlineSync = require("readline-sync");
+
+
 
 // Wait for user's response.
 // let name = readlineSync.question("May I have your first name?");
@@ -8,7 +10,7 @@ const giveName = {
 };
 
 
-module.exports = { giveName } 
+module.exports = { giveName, canoeQuestion } 
 
 //Create an array for randomly generated name
 // const compName =
@@ -22,30 +24,26 @@ module.exports = { giveName }
 //     "Heidi", "Kayla", "Anatasia", "Amy", "Stephanie", "Myles", "Kevin", "Grayson", "Poppy", "Corbin", "Hayden", "Bradley", "Weston", "Westley",
 //     "Maeve", "Kylie", "Anthony", "Jax", "Barett", "Hannah", "Stella", "Jessica", "Alexa", "Aaron", "Derek", "David", "Riley", "Zander",
 //     "Lilly", "Ruby", "Penelope", "Natalie", "Aurora", "Gracie", "Grace", "Maddison", "Walker", "Alicia", "Bella", "Octavia", "Brianna",
-//     "Vivian", "Eleanor", "Danica", "Andrea", "Morgan", "Serena", "Alexandra", "Mackenzie", "Addison"] 
+//     "Vivian", "Eleanor", "Danica", "Andrea", "Morgan", "Serena", "Alexandra", "Mackenzie", "Addison"]
 
 // const numOfNames = compName.length;
-const randomName = Math.floor(numOfNames * Math.random());
+// const randomName = Math.floor(numOfNames * Math.random());
 // console.log(`\nYour canoe partner for this trip is ${compName[randomName]}.`);
 
 //Let the usere choose a canoe
-// function canoeQuestion() {
-//   const canoeType = ["Recreational Canoe", "Expedition Canoe"];
-//   const type = readlineSync.keyInSelect(
-//     canoeType,
-//     "Which type of canoe do you want?"
-//   );
 
-//   if (type === 0) {
-//     console.log("Great choice guys!!");
-//   } else if (type === 1) {
-//     console.log("Great choice guys!!");
-//   } else {
-//     console.log("Invalid choice, try again!");
-//     canoeQuestion();
-//   }
-// }
-// canoeQuestion();
+function canoeQuestion() {
+  const chooseCanoe = ["Recreational Canoe", "Expedition Canoe"];
+  // const canoeChoice = readlineSync.keyInSelect(chooseCanoe, "What canoe type would you like to use?");
+  if (chooseCanoe === '1') {
+    return ("Your choice is the Recreational Canoe");
+  } else if (chooseCanoe === '2') {
+    return ("Your choice is the Expedition Canoe");
+  } else {
+    return ("Invalid choice, try again!");
+  }
+};
+canoeQuestion();
 
 // console.log(
 //   "\nYour canoe is equipped with all of the proper safety gear, looks like you guys know what you're doing."

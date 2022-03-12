@@ -1,6 +1,7 @@
 const express = require("express");
 const res = require("express/lib/response");
 const { giveName } = require('./index');
+// const readlineSync = require("readline-sync")
 
 const app = express();
 
@@ -39,7 +40,9 @@ app.get('/compName', (req, res) => {
     let computerName = req.query.computerName;
     
     if (computerName === '?' || computerName === '"?"') {
-        res.send(`Your canoe partner for this trip is ${compName[randomName]}`);
+        res.send(
+          `Your canoe partner for this trip is ${compName[randomName]}, Go to this link to choose your canoe? curl http://localhost:5000/canoeChoice?chooseCanoe={1=Recreational canoe, 2=Expedition canoe}`
+        );
         console.log(
           `Your canoe partner for this trip is ${compName[randomName]}.`
         );
@@ -48,3 +51,15 @@ app.get('/compName', (req, res) => {
     }
 });
 
+app.get('/canoeChoice', (req, res) => {
+    let chooseCanoe = req.query.chooseCanoe
+    if (chooseCanoe === '1' || chooseCanoe === '"1"') {
+        res.send("Your choice is the Recreational Canoe");
+        console.log("Your choice is the Recreational Canoe");
+    } else if (chooseCanoe === '2' || chooseCanoe === '"2"') {
+        res.send("Your choice is the Expedition Canoe");
+        console.log("Your choice is the Expedition Canoe");
+    } else {
+        res.send("Invalid choice, try again!");
+    }
+});
