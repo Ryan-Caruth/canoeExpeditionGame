@@ -1,6 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName, canoeQuestion } = require('./index');
+const { giveName, canoeQuestion, lake } = require('./index');
 
 const app = express();
 
@@ -53,6 +53,13 @@ app.get('/compName', (req, res) => {
 app.get('/canoeChoice', (req, res) => {
     let chooseCanoe = req.query.chooseCanoe;
     let answer = canoeQuestion(chooseCanoe);
-    res.send(`${answer}`);
+    res.send(`${answer}.`);
     console.log(answer);
+});
+
+app.get('/onTheWater', (req, res) => {
+  let direction = req.query.direction;
+  let answer = lake(direction);
+  res.send(`${answer}.`);
+  console.log(answer);
 });
