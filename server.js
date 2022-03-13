@@ -1,6 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice } = require('./index');
+const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate } = require('./index');
 
 const app = express();
 
@@ -51,5 +51,17 @@ app.get('/onTheriver', (req, res) => {
   let direction = req.query.direction;
   let answer = riverDirectionChoice(direction);
   res.send(`${answer}.`);
-  console.log({answer});
+  console.log(answer);
+});
+
+app.get('/hazard', (req, res) => {
+  res.send(`Uh oh, ${randomName}, who is sitting in the front of the canoe sees a hazard up ahead. Do they communicate with ${giveName.name}?
+          Please go here to answer the question. curl http:localhost:5000/communicateWithStern?communicate={enter yes or no}`);
+});
+
+app.get('/communicateWithStern', (req, res) => {
+  let communicate = req.query.communicate;
+  let answer = doTheyCommunicate(communicate);
+  res.send(`${answer}.`);
+  console.log(answer);
 });
