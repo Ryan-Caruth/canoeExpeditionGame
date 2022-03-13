@@ -111,10 +111,21 @@ function riverDirectionChoice(direction) {
   } else if (direction === "right" || direction === '"right"') {
     return `I'm sorry ${giveName.name} and ${randomName}, a terrible decision is leading you over a waterfall. This is a fatal fall. Would you like to play again?`;
   } else if (direction === "middle" || direction === '"middle"') {
-    return "The canoe is manoevering well down this passage";
+    return "The canoe is manoevering well down this passage. Please go here to continue the story curl http://localhost:5000/hazard";
   } else {
     return "Invalid choice, please enter {left, right or middle}";
   }
 }
 
-module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice };
+//front of canoe communicate with back of canoe
+function doTheyCommunicate(talking) {
+  if (talking === "yes" || talking === '"yes"') {
+    return "You guys successfully manover around the hazard";
+  } else if (talking === "no" || talking === '"no"') {
+    return "Bang!! Canoe hits a log in the water and taco's, all of your camping supplies are either at the bottom of the river or swept away";
+  } else {
+    return "Invalid choice, please enter {yes or no}";
+  }
+}
+
+module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate };
