@@ -1,6 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName } = require('./index');
+const { giveName, canoeQuestion } = require('./index');
 
 const app = express();
 
@@ -51,14 +51,8 @@ app.get('/compName', (req, res) => {
 });
 
 app.get('/canoeChoice', (req, res) => {
-    let chooseCanoe = req.query.chooseCanoe
-    if (chooseCanoe === '1' || chooseCanoe === '"1"') {
-        res.send("Your choice is the Recreational Canoe");
-        console.log("Your choice is the Recreational Canoe");
-    } else if (chooseCanoe === '2' || chooseCanoe === '"2"') {
-        res.send("Your choice is the Expedition Canoe");
-        console.log("Your choice is the Expedition Canoe");
-    } else {
-        res.send("Invalid choice, try again!");
-    }
+    let chooseCanoe = req.query.chooseCanoe;
+    let answer = canoeQuestion(chooseCanoe);
+    res.send(`${answer}`);
+    console.log(answer);
 });

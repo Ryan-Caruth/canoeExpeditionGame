@@ -28,15 +28,13 @@ module.exports = { giveName, canoeQuestion }
 
 //Let the usere choose a canoe
 
-function canoeQuestion() {
-  const chooseCanoe = ["Recreational Canoe", "Expedition Canoe"];
-  // const canoeChoice = readlineSync.keyInSelect(chooseCanoe, "What canoe type would you like to use?");
-  if (chooseCanoe === '1') {
+function canoeQuestion(chooseCanoe) {
+  if (chooseCanoe === '1' || chooseCanoe === '"1"') {
     return ("Your choice is the Recreational Canoe");
-  } else if (chooseCanoe === '2') {
+  } else if (chooseCanoe === '2' || chooseCanoe ==='"2"') {
     return ("Your choice is the Expedition Canoe");
   } else {
-    return ("Invalid choice, try again!");
+    return ("Invalid choice, please enter {1 or 2}");
   }
 };
 canoeQuestion();
