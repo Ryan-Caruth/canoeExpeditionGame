@@ -1,6 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName, canoeQuestion, lake } = require('./index');
+const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice } = require('./index');
 
 const app = express();
 
@@ -23,43 +23,33 @@ app.get('/giveName', (req, res) => {
     let name = req.query.name;
     giveName.name = name;
     res.send(
-      `Hello ${name}. Please go to this link to find out who your canoe partner is curl http://localhost:5000/compName?computerName={Enter '?'}.`
+      `Hello ${name}. Please go to this link to find out who your canoe partner is curl http://localhost:5000/compName.`
     );
     console.log(name);
 });
 
 app.get('/compName', (req, res) => {
-    let compName = ["Jack", "Jill", "Fred", "Steve", "John", "Sarah", "Philip", "Liana", "Maggie", "Jade", "Jodie", "Hope", "Greg",
-        "Graham", "Cory", "Reid", "Patrick", "Sam", "Samatha", "Tobey", "Brian", "Ryan", "Rachel", "Elvis", "Sidney", "Lorrie", "Carly", "Jake",
-        "Katie", "Nicole", "Evan", "Tim", "Tom", "Jaden", "Ashley", "Theodore", "Dory", "Jody", "Judy", "Peggy", "Wally", "Wallace", "Jessie", "Tony",
-        "Ethan", "Janette", "Gord", "Jenifer", "Brandon", "Betty", "Mary", "Skyler", "Tucker", "Chelsea", "Ally", "Aidan", "Andrew", "Bailey",
-        "Billy", "Bob", "Catherine", "Hayley", "Annabelle", "Kyle", "Ryder", "Marcus"];
-    let numOfNames = compName.length;
-    let randomName = Math.floor(numOfNames * Math.random());
-    let computerName = req.query.computerName;
-    
-    if (computerName === '?' || computerName === '"?"') {
-        res.send(
-          `Your canoe partner for this trip is ${compName[randomName]}, Go to this link to choose your canoe? curl http://localhost:5000/canoeChoice?chooseCanoe={1=Recreational canoe, 2=Expedition canoe}`
-        );
-        console.log(
-          `Your canoe partner for this trip is ${compName[randomName]}.`
-        );
-    } else {
-        res.send("Invalid entry, please enter '?'");
-    }
+  res.send(`Your canoe partner for this trip is ${randomName}. Please go to this link to decide what canoe to have curl http://localhost:5000/canoeChoice?chooseCanoe={1-Recreational Canoe, 2-Expedition Canoe}`);
 });
+
 
 app.get('/canoeChoice', (req, res) => {
     let chooseCanoe = req.query.chooseCanoe;
-    let answer = canoeQuestion(chooseCanoe);
+    let answer = chooseACanoe(chooseCanoe);
     res.send(`${answer}.`);
     console.log(answer);
 });
 
 app.get('/onTheWater', (req, res) => {
   let direction = req.query.direction;
-  let answer = lake(direction);
+  let answer = navigateTheLake(direction);
   res.send(`${answer}.`);
   console.log(answer);
+});
+
+app.get('/onTheriver', (req, res) => {
+  let direction = req.query.direction;
+  let answer = riverDirectionChoice(direction);
+  res.send(`${answer}.`);
+  console.log({answer});
 });
