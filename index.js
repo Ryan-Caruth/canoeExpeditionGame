@@ -6,7 +6,7 @@ const giveName = {
 };
 
 
-module.exports = { giveName, canoeQuestion } 
+module.exports = { giveName, canoeQuestion, lake } 
 
 //Create an array for randomly generated name
 // const compName =
@@ -30,54 +30,28 @@ module.exports = { giveName, canoeQuestion }
 
 function canoeQuestion(chooseCanoe) {
   if (chooseCanoe === '1' || chooseCanoe === '"1"') {
-    return ("Your choice is the Recreational Canoe");
+    return ("Your choice is the Recreational Canoe, Go to this link to learn how you guys navigate this lake");
   } else if (chooseCanoe === '2' || chooseCanoe ==='"2"') {
-    return ("Your choice is the Expedition Canoe");
+    return ("Your choice is the Expedition Canoe, Go to this link to learn how you guys navigate this lake");
   } else {
-    return ("Invalid choice, please enter {1 or 2}");
+    return ("Invalid choice, please enter {1 for Recreational Canoe or 2 for Expedition Canoe}");
   }
 };
 canoeQuestion();
 
-// console.log(
-//   "\nYour canoe is equipped with all of the proper safety gear, looks like you guys know what you're doing."
-// );
-
-// console.log(
-//   `\nFinally you guys have made it to the campsite. Don\'t get to comfy though. You guys are going to be on the water bright and early. Expect to be on the water for at least two days`
-// );
-
-// console.log(
-//   `\nCanoe is prepared. Time for our trip. Have fun ${name} and ${compName[randomName]}.`
-// );
-
-// console.log(
-//   "\nUh oh! It looks like the weather is getting bad up ahead. You too are heading into some choppy water."
-// );
-
 // //Decision to stay in middle of lake or paddle near shore
-// function lake() {
-//   const whereInLake = [
-//     "Stay in the middle of the lake where the waves are big",
-//     "Paddle near shore where the waves are smaller",
-//   ];
-//   const location = readlineSync.keyInSelect(
-//     whereInLake,
-//     "Where should you guys be paddling in this lake?"
-//   );
-
-//   if (location === 0) {
-//     console.log(
-//       "Not the best decision, the waves are really hard to manage and are splashing over into the canoe"
-//     );
-//   } else if (location === 1) {
-//     console.log("Great choice!! Waves are really manageable near the shore");
-//   } else {
-//     console.log("Invalid choice, try again!");
-//     lake();
-//   }
-// }
-// lake();
+function lake(location) {
+  if (location === 'Middle' || location === '"Middle"') {
+    return (
+      "Not the best decision, the waves are really hard to manage and are splashing over into the canoe"
+    );
+  } else if (location === 'Side' || location === '"Side"') {
+    return ("Great choice!! Waves are really manageable near the shore");
+  } else {
+    return ("Invalid choice, please enter {Middle or Side}");
+  }
+};
+lake();
 
 // //Decision tree on where to run river
 // function river() {
