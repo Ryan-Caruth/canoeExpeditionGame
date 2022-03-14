@@ -23,13 +23,14 @@ app.get('/giveName', (req, res) => {
     let name = req.query.name;
     giveName.name = name;
     res.send(
-      `Hello ${name}. Please go to this link to find out who your canoe partner is curl http://localhost:5000/compName.`
+      `Hello ${name}. Please go to this link to find out who your canoe partner is curl http://localhost:5000/generatedName.`
     );
     console.log(name);
 });
 
-app.get('/compName', (req, res) => {
+app.get('/generatedName', (req, res) => {
   res.send(`Your canoe partner for this trip is ${randomName}. Please go to this link to decide what canoe to have curl http://localhost:5000/canoeChoice?chooseCanoe={1-Recreational Canoe, 2-Expedition Canoe}`);
+  console.log(`${randomName}`);
 });
 
 
@@ -41,8 +42,8 @@ app.get('/canoeChoice', (req, res) => {
 });
 
 app.get('/onTheWater', (req, res) => {
-  let direction = req.query.direction;
-  let answer = navigateTheLake(direction);
+  let location = req.query.location;
+  let answer = navigateTheLake(location);
   res.send(`${answer}.`);
   console.log(answer);
 });
@@ -60,8 +61,8 @@ app.get('/hazard', (req, res) => {
 });
 
 app.get('/communicateWithStern', (req, res) => {
-  let communicate = req.query.communicate;
-  let answer = doTheyCommunicate(communicate);
+  let talking = req.query.talking;
+  let answer = doTheyCommunicate(talking);
   res.send(`${answer}.`);
   console.log(answer);
 });
@@ -77,8 +78,8 @@ app.get('/nextDay', (req, res) => {
 })
 
 app.get('/doWeRiskIt', (req, res) => {
-  let decision = req.query.decision;
-  let answer = waitOrGoOnWater(decision);
+  let riskIt = req.query.riskIt;
+  let answer = waitOrGoOnWater(riskIt);
   res.send(`${answer}.`);
   console.log(answer);
 })

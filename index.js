@@ -2,7 +2,7 @@
 // let name = readlineSync.question("May I have your first name?");
 //Create an object for your given name: To be imported into server.js;
 const giveName = {
-  name: "Ryan",
+  name: " ",
 };
 
 let randomName = generateRandomName();
