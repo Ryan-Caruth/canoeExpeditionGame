@@ -85,9 +85,9 @@ function generateRandomName() {
 
 function chooseACanoe(chooseCanoe) {
   if (chooseCanoe === "1" || chooseCanoe === '"1"') {
-    return "Your choice is the Recreational Canoe. Early into your trip you guys come across some windy weather. Go to this link to learn how you guys navigate this lake: curl http://localhost:5000/onTheWater?direction={Middle or Side}";
+    return "Your choice is the Recreational Canoe. Early into your trip you guys come across some windy weather. Go to this link to learn how you guys navigate this lake: curl http://localhost:5000/onTheWater?location={Middle or Side}";
   } else if (chooseCanoe === "2" || chooseCanoe === '"2"') {
-    return "Your choice is the Expedition Canoe. Early into your trip you guys come across some windy weather. Go to this link to learn how you guys navigate this lake: curl http://localhost:5000/onTheWater?direction={Middle or Side}";
+    return "Your choice is the Expedition Canoe. Early into your trip you guys come across some windy weather. Go to this link to learn how you guys navigate this lake: curl http://localhost:5000/onTheWater?location={Middle or Side}";
   } else {
     return "Invalid choice, please enter {1 for Recreational Canoe or 2 for Expedition Canoe}";
   }
@@ -128,10 +128,10 @@ function doTheyCommunicate(talking) {
   }
 }
 //Do you guys go out in a thunderstorm or not
-function waitOrGoOnWater(riskIt) {
-  if (riskIt === "go" || riskIt === '"go"') {
+function waitOrGoOnWater(choice) {
+  if (choice === "go" || choice === '"go"') {
     return "Hopefully this gamble dosen't end in a disater. You guys decide to keep going";
-  } else if (riskIt === "wait" || riskIt === '"wait"') {
+  } else if (choice === "wait" || choice === '"wait"') {
     return "Smart choice, within one hour the storm stopped. The lake became very flat and still, ideal conditions for a paddle";
   } else {
     return "Invalid chice, please enter {wait or go}";
