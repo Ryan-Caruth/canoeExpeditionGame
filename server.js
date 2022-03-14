@@ -74,7 +74,7 @@ app.get('/madeItToSite', (req, res) => {
 
 app.get('/nextDay', (req, res) => {
   res.send(`Rise and shine time to hit the water. Uh oh you guys see thunder clouds rolling in. Do you risk it and go on the water on wait on land.
-          Please go to this link to answer the question: curl http://localhost:5000/doWeRiskIt?decision={enter wait or go}`);
+          Please go to this link to answer the question: curl http://localhost:5000/doWeRiskIt?choice={enter wait or go}`);
 })
 
 app.get('/doWeRiskIt', (req, res) => {
@@ -82,4 +82,8 @@ app.get('/doWeRiskIt', (req, res) => {
   let answer = waitOrGoOnWater(choice);
   res.send(`${answer}.`);
   console.log(answer);
+})
+
+app.get('/hooray', (req, res) => {
+  res.send(`Congrats you guy's have made it out. Now go celebrate at the pub.`);
 })
