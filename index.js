@@ -127,6 +127,18 @@ function doTheyCommunicate(talking) {
     return "Invalid choice, please enter {yes or no}";
   }
 }
-  
+//Do you guys go out in a thunderstorm or not
+function waitOrGoOnWater(riskIt) {
+  if (riskIt === "go" || riskIt === '"go"') {
+    return "Hopefully this gamble dosen't end in a disater. You guys decide to keep going";
+  } else if (riskIt === "wait" || riskIt === '"wait"') {
+    return "Smart choice, within one hour the storm stopped. The lake became very flat and still, ideal conditions for a paddle";
+  } else {
+    return "Invalid chice, please enter {wait or go}";
+  }
+}
+    
 
-module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate };
+
+
+module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, waitOrGoOnWater };
