@@ -1,6 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate } = require('./index');
+const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, waitOrGoOnWater } = require('./index');
 
 const app = express();
 
@@ -73,5 +73,12 @@ app.get('/madeItToSite', (req, res) => {
 
 app.get('/nextDay', (req, res) => {
   res.send(`Rise and shine time to hit the water. Uh oh you guys see thunder clouds rolling in. Do you risk it and go on the water on wait on land.
-          Please go to this link to answer the question: curl`);
+          Please go to this link to answer the question: curl http://localhost:5000/doWeRiskIt?decision={enter wait or go}`);
+})
+
+app.get('/doWeRiskIt', (req, res) => {
+  let decision = req.query.decision;
+  let answer = waitOrGoOnWater(decision);
+  res.send(`${answer}.`);
+  console.log(answer);
 })
