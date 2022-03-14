@@ -67,5 +67,11 @@ app.get('/communicateWithStern', (req, res) => {
 });
 
 app.get('/madeItToSite', (req, res) => {
-  res.send('Hooray!! You too had a very successful day out on the water today. Now rest up at this campsite and leave bright and early tomorrow morning.')
+  res.send(`Hooray!! You too had a very successful day out on the water today. Now rest up at this campsite and leave bright and early tomorrow morning.
+          Please go to this link to see what happens next. curl http://localhost:5000/nextDay `)
+})
+
+app.get('/nextDay', (req, res) => {
+  res.send(`Rise and shine time to hit the water. Uh oh you guys see thunder clouds rolling in. Do you risk it and go on the water on wait on land.
+          Please go to this link to answer the question: curl`);
 })

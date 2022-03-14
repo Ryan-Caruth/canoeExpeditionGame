@@ -127,5 +127,6 @@ function doTheyCommunicate(talking) {
     return "Invalid choice, please enter {yes or no}";
   }
 }
+  
 
 module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate };
