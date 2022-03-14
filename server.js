@@ -56,7 +56,7 @@ app.get('/onTheriver', (req, res) => {
 
 app.get('/hazard', (req, res) => {
   res.send(`Uh oh, ${randomName}, who is sitting in the front of the canoe sees a hazard up ahead. Do they communicate with ${giveName.name}?
-          Please go here to answer the question. curl http:localhost:5000/communicateWithStern?communicate={enter yes or no}`);
+          Please go here to answer the question. curl http://localhost:5000/communicateWithStern?communicate={enter yes or no}`);
 });
 
 app.get('/communicateWithStern', (req, res) => {
@@ -65,3 +65,7 @@ app.get('/communicateWithStern', (req, res) => {
   res.send(`${answer}.`);
   console.log(answer);
 });
+
+app.get('/madeItToSite', (req, res) => {
+  res.send('Hooray!! You too had a very successful day out on the water today. Now rest up at this campsite and leave bright and early tomorrow morning.')
+})

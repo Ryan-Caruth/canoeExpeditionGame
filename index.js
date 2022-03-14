@@ -120,7 +120,7 @@ function riverDirectionChoice(direction) {
 //front of canoe communicate with back of canoe
 function doTheyCommunicate(talking) {
   if (talking === "yes" || talking === '"yes"') {
-    return "You guys successfully manover around the hazard";
+    return "You guys successfully manover around the hazard. Please go to this link to continue the story: curl http://localhost:5000/madeItToSite";
   } else if (talking === "no" || talking === '"no"') {
     return "Bang!! Canoe hits a log in the water and taco's, all of your camping supplies are either at the bottom of the river or swept away";
   } else {
