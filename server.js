@@ -1,6 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, waitOrGoOnWater, isThereLightning } = require('./index');
+const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning } = require('./index');
 
 const app = express();
 
@@ -79,17 +79,10 @@ app.get('/nextDay', (req, res) => {
 
 app.get('/doWeRiskIt', (req, res) => {
   let choice = req.query.choice;
-  let answer = waitOrGoOnWater(choice);
+  let answer = thunderAndLightning(choice);
   res.send(`${answer}.`);
   console.log(answer);
 })
-
-app.get('/isLightning', (req, res) => {
-  let answer = isThereLightning();
-  res.send(`${answer}`);
-  console.log(`${answer}`)
-})
-
 
 app.get('/hooray', (req, res) => {
   res.send(`Congrats you guy's have made it out. Now go celebrate at the pub.`);
