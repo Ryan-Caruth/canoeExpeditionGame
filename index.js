@@ -121,12 +121,24 @@ function riverDirectionChoice(direction) {
 function doTheyCommunicate(talking) {
   if (talking === "yes" || talking === "Yes") {
     return "You guys successfully manover around the hazard. Please go to this link to continue the story: curl http://localhost:5000/madeItToSite";
-  } else if (talking === "no" || taliking === "No") {
+  } else if (talking === "no" || talking === "No") {
     return "Bang!! Canoe hits a log in the water and taco's, all of your camping supplies are either at the bottom of the river or swept away";
   } else {
     return "Invalid choice, please enter {yes or no}";
   }
 }
+
+//Function for decision on shore 
+function onShore(survive) {
+  if (survive === "find" || survive === "Find") {
+    return "Cold, bruised and no food, you start venturing into the woods in hopes of finding civilization. The end. Play again?"
+  } else if (survive ==="shore" || survive ==="Shore") {
+    return "Cold, bruised and no food, you guys wait on shore for other canoers to spot you. The end. Play again?"
+  } else {
+    return "Invalid choice, please enter {find of shore}"
+  }
+}
+
 //Do you guys go out in a thunderstorm or not, is therre lightning
 function thunderAndLightning(choice) {
   let isLightning = ["true", "false"];
@@ -137,7 +149,7 @@ function thunderAndLightning(choice) {
   if (choice === "go" && lightning === 'true' || choice === "Go" && lightning === 'true') {
       return 'You guys decided to risk it and go out during a storm. You guys got struck by lightning. Play again?'
   } else if (choice === "go" && lightning === 'false' || choice === "Go" && lightning === 'false') {
-      return `You are Lucky! You too have managed to escape the storm injury free. Please click this link to see what happens next: http://localhost:5000/hooray`
+      return `You are Lucky! You too have managed to escape the storm injury free. Please click this link to see what happens next: curl http://localhost:5000/hooray`
   } else if (choice === "wait" || choice === "Wait") {
       return `Smart choice, within one hour the storm stopped. The lake became very flat and still, perfect for a paddle. Please click this link to see what happens next: http://localhost:5000/hooray `
   } else {
@@ -145,4 +157,4 @@ function thunderAndLightning(choice) {
     }
   }
 
- module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning };
+ module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning, onShore };
