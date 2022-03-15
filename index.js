@@ -130,16 +130,30 @@ function doTheyCommunicate(talking) {
 //Do you guys go out in a thunderstorm or not
 function waitOrGoOnWater(choice) {
   if (choice === "go" || choice === '"go"') {
-    return "Hopefully this gamble dosen't end in a disater. You guys decide to keep going";
+    return `Hopefully this gamble dosen't end in a disater. You guys decide to keep going. Please click this link to accept your fate: http://localhost:5000/isLightning`
   } else if (choice === "wait" || choice === '"wait"') {
-    return `Smart choice, within one hour the storm stopped. The lake became very flat and still, perfect for a paddle`
-            `Please click this link to see what happens next: `
+    return `Smart choice, within one hour the storm stopped. The lake became very flat and still, perfect for a paddle. Please click this link to see what happens next: http://localhost:5000/hooray `
   } else {
-    return "Invalid chice, please enter {wait or go}";
+    return "Invalid chioce, please enter {wait or go}";
   }
 }
+
+//Create a function that determines canoers fate with lightning
+function isThereLightning() {
+  let isLightning = ['true', 'false']
+  let numOfChoices = isLightning.length
+  let randomNum = Math.floor(numOfChoices * Math.random());
+  
+  if (isLightning[randomNum] === 'true') {
+    return 'A very bad decision has just cost you too your lives. Would you like to play again?'
+  } else if (isLightning[randomNum] === 'false') {
+    return `You are Lucky! You too have managed to escape the storm injury free. Please click this link to see what happens next: http://localhost:5000/hooray`
+  }
+}
+
+
     
 
 
 
-module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, waitOrGoOnWater };
+module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, waitOrGoOnWater, isThereLightning };
