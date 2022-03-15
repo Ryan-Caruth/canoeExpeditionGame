@@ -1,6 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning } = require('./index');
+const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning, onShore } = require('./index');
 
 const app = express();
 
@@ -14,8 +14,7 @@ app.listen(PORT, echoPortNumber);
 
 app.get('/startGame', (req, res) => {
     res.send(
-      "Welcome to 'Canadian eh', a game that will test your instincts in a canoe.\
-    Please copy this link and paste in your terminal to continue curl http://localhost:5000/giveName?name={Enter your name here}."
+      "Welcome to 'Canadian eh', a game that will test your instincts in a canoe. Please copy this link and paste in your terminal to continue curl http://localhost:5000/giveName?name={Enter your name here}."
     );
 });
 
@@ -63,9 +62,23 @@ app.get('/hazard', (req, res) => {
 app.get('/communicateWithStern', (req, res) => {
   let talking = req.query.talking;
   let answer = doTheyCommunicate(talking);
-  res.send(`${answer}.`);
+  res.send(`${answer}. Please go here to see what happens next: curl http://localhost:5000/capsize`);
   console.log(answer);
 });
+
+app.get('/capsize', (req, res) => {
+  res.send(`The two of you fall into the water and get swept underneath a log jam.
+    Fortunately the current lets go and you guys bob back up gasping for air and are able to swim to shore.
+    On the shore you have a decision to make on what to do next
+    Please go here to enter your answer: curl http://localhost:5000/choiceOnShore?survive={find or shore}`)
+})
+
+app.get('/choiceOnShore', (req, res) => {
+  let survive = req.query.survive;
+  let answer = onShore(survive);
+  res.send(`${answer}`);
+  console.log(answer);
+})
 
 app.get('/madeItToSite', (req, res) => {
   res.send(`Hooray!! You too had a very successful day out on the water today. Now rest up at this campsite and leave bright and early tomorrow morning.
