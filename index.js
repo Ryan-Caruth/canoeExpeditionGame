@@ -95,9 +95,9 @@ function chooseACanoe(chooseCanoe) {
 
 // //Decision to stay in middle of lake or paddle near shore
 function navigateTheLake(location) {
-  if (location === "Middle") {
+  if (location === "Middle" || location ==="middle") {
     return "Not the best decision, the waves are really hard to manage and are splashing over into the canoe";
-  } else if (location === "Side") {
+  } else if (location === "Side" || location ==="side") {
     return "Great choice!! Waves are really manageable near the shore. Lake soon narrows into a river with three directions. Which way do you go? curl http://localhost:5000/onTheRiver?direction={Enter left, right or middle}";
   } else {
     return "Invalid choice, please enter {Middle or Side}";
@@ -106,11 +106,11 @@ function navigateTheLake(location) {
 
 // //Decision tree on where to run river
 function riverDirectionChoice(direction) {
-  if (direction === "left") {
+  if (direction === "left" || direction ==="Left") {
     return "This piece a piece of cake. I could navigate this passage with my eyes closed";
-  } else if (direction === "right") {
+  } else if (direction === "right" || direction ==="Right") {
     return `I'm sorry ${giveName.name} and ${randomName}, a terrible decision is leading you over a waterfall. This is a fatal fall. Would you like to play again?`;
-  } else if (direction === "middle") {
+  } else if (direction === "middle" || direction === "Middle" ) {
     return "The canoe is manoevering well down this passage. Please go here to continue the story curl http://localhost:5000/hazard";
   } else {
     return "Invalid choice, please enter {left, right or middle}";
@@ -119,9 +119,9 @@ function riverDirectionChoice(direction) {
 
 //front of canoe communicate with back of canoe
 function doTheyCommunicate(talking) {
-  if (talking === "yes") {
+  if (talking === "yes" || talking === "Yes") {
     return "You guys successfully manover around the hazard. Please go to this link to continue the story: curl http://localhost:5000/madeItToSite";
-  } else if (talking === "no") {
+  } else if (talking === "no" || taliking === "No") {
     return "Bang!! Canoe hits a log in the water and taco's, all of your camping supplies are either at the bottom of the river or swept away";
   } else {
     return "Invalid choice, please enter {yes or no}";
@@ -134,11 +134,11 @@ function thunderAndLightning(choice) {
   let randomNum = Math.floor(numOfChoices * Math.random());
   let lightning = isLightning[randomNum];
     
-  if (choice === "go" && lightning === 'true') {
+  if (choice === "go" && lightning === 'true' || choice === "Go" && lightning === 'true') {
       return 'You guys decided to risk it and go out during a storm. You guys got struck by lightning. Play again?'
-  } else if (choice === "go" && lightning === 'false') {
+  } else if (choice === "go" && lightning === 'false' || choice === "Go" && lightning === 'false') {
       return `You are Lucky! You too have managed to escape the storm injury free. Please click this link to see what happens next: http://localhost:5000/hooray`
-  } else if (choice === "wait") {
+  } else if (choice === "wait" || choice === "Wait") {
       return `Smart choice, within one hour the storm stopped. The lake became very flat and still, perfect for a paddle. Please click this link to see what happens next: http://localhost:5000/hooray `
   } else {
       return "Invalid chioce, please enter {wait or go}";
