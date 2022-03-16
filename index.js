@@ -123,7 +123,7 @@ function inWaterDecision(option, paddle) {
     if (paddle === "shore" || paddle === "Shore") {
       return `You guys were able to get back in the canoe and paddle to shore. Please click here to find out what your decision is: curl http://localhost:5000/canoeToShore?shoreChoice={go or stay} `;
     } else if (paddle === "continue" || paddle === "Continue") {
-      return `You guys are troopers for carrying on soaked`;
+      return `You guys are troopers for carrying on soaked. Please click here to determine what's next: curl http://localhost:5000/continueSoaked`;
     } else
       return `Invalid entry`;
   } else if (option === "land" || option === "Land") {
@@ -139,9 +139,9 @@ function inWaterDecision(option, paddle) {
 
 function canoeToShore(shoreChoice) {
   if (shoreChoice === "stay" || shoreChoice === "Stay") {
-    return "You guys decide to stay on shore and wait for help. Please click here to find out what happens next: http://localhost:5000/waitOnShore";
+    return "You guys decide to stay on shore and wait for help. Please click here to find out what happens next: curl http://localhost:5000/waitOnShore";
   } else if (shoreChoice === "Go" || shoreChoice === "go") {
-    return "You guys decided to push despite being cold and wet. Please click here to find out what happens next: "
+    return "You guys decided to push on despite being cold and wet. Please click here to find out what happens next: curl http://localhost:5000/continueSoaked";
   } else {
     return "Invalid answer. Please enter {stay or choice}"
   }
