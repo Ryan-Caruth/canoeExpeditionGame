@@ -185,7 +185,18 @@ function thunderAndLightning(choice) {
   } else {
       return "Invalid chioce, please enter {wait or go}";
     }
+}
+
+//Creating a function for answering true or false for the hypothermia question
+function trueOrFalse(knowledge) {
+  if (knowledge === "true" || knowledge === "true") {
+    return `I am sorry wrong answer. ${giveName.name} and ${randomName}, you too have succumb to your injuries and passed away. Would you like to play again?`;
+  } else if (knowledge === "false" || knowledge === "False") {
+    return `Correct!! ${giveName.name} and ${randomName}, you too a strong willed and were able to canoe the whole circuit. You win! Would you like to play again?`;
+  } else {
+    return `Invalid answer, please enter {true or false}`;
   }
+}
 
 module.exports = {
   giveName,
@@ -197,5 +208,6 @@ module.exports = {
   thunderAndLightning,
   onShore,
   inWaterDecision,
-  canoeToShore
+  canoeToShore,
+  trueOrFalse
 };
