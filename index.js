@@ -139,7 +139,7 @@ function inWaterDecision(option, paddle) {
 
 function canoeToShore(shoreChoice) {
   if (shoreChoice === "stay" || shoreChoice === "Stay") {
-    return "You guys decide to stay on shore and wait for help. Please click here to find out what happens next: "
+    return "You guys decide to stay on shore and wait for help. Please click here to find out what happens next: http://localhost:5000/waitOnShore";
   } else if (shoreChoice === "Go" || shoreChoice === "go") {
     return "You guys decided to push despite being cold and wet. Please click here to find out what happens next: "
   } else {
