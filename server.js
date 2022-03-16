@@ -9,7 +9,8 @@ const { giveName,
   thunderAndLightning,
   onShore,
   inWaterDecision,
-  canoeToShore } = require('./index');
+  canoeToShore,
+  trueOrFalse } = require('./index');
 
 const app = express();
 
@@ -50,14 +51,29 @@ app.get('/canoeChoice', (req, res) => {
 });
 
 app.get('/canoeToShore', (req, res) => {
-  let shoreChoice = req.query.shoreChoice
+  let shoreChoice = req.query.shoreChoice;
   let answer = canoeToShore(shoreChoice);
   res.send(`${answer}.`);
   console.log(answer);
 });
 
 app.get('/continueSoaked', (req, res) => {
-  res.send('Time to pull off somewhere and call it a night. All your gear is gone and you guys are soaked so it will be a rough night. Please go here to answer a knowledge based question to determine your fate: ');
+  res.send(
+    "Time to pull off somewhere and call it a night. All your gear is gone and you guys are soaked so it will be a rough night. Please go here to answer a knowledge based question: http://localhost:5000/hypoQuestion"
+  );
+});
+
+app.get('/hypoQuestion', (req, res) => {
+  res.send(
+    "You can only develop hypothermia if the outside temperature is below freezing? Please go here to answer: http://localhost:5000/hypoAnswer?knowledge={true or false}"
+  );
+});
+
+app.get('/hypoAnswer', (req, res) => {
+  let knowledge = req.query.knowledge;
+  let answer = trueOrFalse(knowledge);
+  res.send(`${answer}.`);
+  console.log(answer);
 })
 
 app.get('/waitOnshore', (req, res) => {
