@@ -121,7 +121,7 @@ function riverDirectionChoice(direction) {
 function inWaterDecision(option, paddle) {
   if (option === "grab" || option === "Grab") {
     if (paddle === "shore" || paddle === "Shore") {
-      return `You guys were able to get back in the canoe and paddle to shore`;
+      return `You guys were able to get back in the canoe and paddle to shore. Please click here to find out what your decision is: curl http://localhost:5000/canoeToShore?shoreChoice={go or stay} `;
     } else if (paddle === "continue" || paddle === "Continue") {
       return `You guys are troopers for carrying on soaked`;
     } else
@@ -137,9 +137,15 @@ function inWaterDecision(option, paddle) {
   }
 }
 
-
-
-
+function canoeToShore(shoreChoice) {
+  if (shoreChoice === "stay" || shoreChoice === "Stay") {
+    return "You guys decide to stay on shore and wait for help. Please click here to find out what happens next: "
+  } else if (shoreChoice === "Go" || shoreChoice === "go") {
+    return "You guys decided to push despite being cold and wet. Please click here to find out what happens next: "
+  } else {
+    return "Invalid answer. Please enter {stay or choice}"
+  }
+}
 
 //front of canoe communicate with back of canoe
 function doTheyCommunicate(talking) {
@@ -181,4 +187,15 @@ function thunderAndLightning(choice) {
     }
   }
 
- module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning, onShore, inWaterDecision };
+module.exports = {
+  giveName,
+  randomName,
+  chooseACanoe,
+  navigateTheLake,
+  riverDirectionChoice,
+  doTheyCommunicate,
+  thunderAndLightning,
+  onShore,
+  inWaterDecision,
+  canoeToShore
+};
