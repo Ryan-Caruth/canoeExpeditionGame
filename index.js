@@ -96,7 +96,7 @@ function chooseACanoe(chooseCanoe) {
 // //Decision to stay in middle of lake or paddle near shore
 function navigateTheLake(location) {
   if (location === "Middle" || location ==="middle") {
-    return "Not the best decision, the waves are really hard to manage and are splashing over into the canoe";
+    return "Not the best decision, the waves are difficult to steer through but you guys managed to make it. Now the lake turns into a river with three directions. Which way do you go? curl http://localhost:5000/onTheRiver?direction={Enter left, right or middle}";
   } else if (location === "Side" || location ==="side") {
     return "Great choice!! Waves are really manageable near the shore. Lake soon narrows into a river with three directions. Which way do you go? curl http://localhost:5000/onTheRiver?direction={Enter left, right or middle}";
   } else {
