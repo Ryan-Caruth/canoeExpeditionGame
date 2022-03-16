@@ -128,7 +128,7 @@ function inWaterDecision(option, paddle) {
       return `Invalid entry`;
   } else if (option === "land" || option === "Land") {
     if (paddle === "abandoned" || paddle === "Abandoned") {
-      return `You guys chose to swim to shore and abandon the canoe. Now there is no more option for self-rescue.`
+      return `You guys choose to swim to shore and abandon the canoe. Now there is no more option for self-rescue. Please click this link to see what happens next: curl http://localhost:5000/choiceOnShore?survive={find or shore}`;
     } else {
       return `Invalid entry`;
   }

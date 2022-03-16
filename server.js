@@ -64,7 +64,7 @@ app.get('/inWater', (req, res) => {
 
 app.get('/collisionOnRock', (req, res) => {
   res.send(`Bang!! Canoe hits a log in the water and splits in half, all of your camping supplies are either at the bottom of the river or
-           swept away Please go here to see what happens next: curl http://localhost:5000/inWater?Option={grab or land}&paddle={shore, continue or abandoned}`);
+           swept away Please go here to see what happens next: curl http://localhost:5000/inWater?option={grab or land}&paddle={shore, continue or abandoned}`);
 })
 
 app.get('/hazard', (req, res) => {
