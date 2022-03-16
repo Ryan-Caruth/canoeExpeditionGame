@@ -1,6 +1,6 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning, onShore } = require('./index');
+const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning, onShore, inWaterDecision } = require('./index');
 
 const app = express();
 
@@ -54,6 +54,19 @@ app.get('/onTheriver', (req, res) => {
   console.log(answer);
 });
 
+app.get('/inWater', (req, res) => {
+  let option = req.query.option;
+  let paddle = req.query.paddle;
+  let answer = inWaterDecision(option, paddle)
+  res.send(`${answer}`);
+  console.log(`${answer}`);
+});
+
+app.get('/collisionOnRock', (req, res) => {
+  res.send(`Bang!! Canoe hits a log in the water and splits in half, all of your camping supplies are either at the bottom of the river or
+           swept away Please go here to see what happens next: curl http://localhost:5000/inWater?Option={grab or land}&paddle={shore, continue or abandoned}`);
+})
+
 app.get('/hazard', (req, res) => {
   res.send(`Uh oh, ${randomName}, who is sitting in the front of the canoe sees a hazard up ahead. Do they communicate with ${giveName.name}?
           Please go here to answer the question. curl http://localhost:5000/communicateWithStern?talking={enter yes or no}`);
@@ -62,7 +75,7 @@ app.get('/hazard', (req, res) => {
 app.get('/communicateWithStern', (req, res) => {
   let talking = req.query.talking;
   let answer = doTheyCommunicate(talking);
-  res.send(`${answer}. Please go here to see what happens next: curl http://localhost:5000/capsize`);
+  res.send(`${answer}.`);
   console.log(answer);
 });
 
