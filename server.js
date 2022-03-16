@@ -56,6 +56,10 @@ app.get('/canoeToShore', (req, res) => {
   console.log(answer);
 });
 
+app.get('/waitOnshore', (req, res) => {
+  res.send(`Cold, bruised and no food you guys wait on shore for help. The end. Play again`);
+})
+
 app.get('/onTheWater', (req, res) => {
   let location = req.query.location;
   let answer = navigateTheLake(location);
