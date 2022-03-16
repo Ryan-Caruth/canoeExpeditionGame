@@ -1,6 +1,15 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning, onShore, inWaterDecision } = require('./index');
+const { giveName,
+  randomName,
+  chooseACanoe,
+  navigateTheLake,
+  riverDirectionChoice,
+  doTheyCommunicate,
+  thunderAndLightning,
+  onShore,
+  inWaterDecision,
+  canoeToShore } = require('./index');
 
 const app = express();
 
@@ -38,6 +47,13 @@ app.get('/canoeChoice', (req, res) => {
     let answer = chooseACanoe(chooseCanoe);
     res.send(`${answer}.`);
     console.log(answer);
+});
+
+app.get('/canoeToShore', (req, res) => {
+  let shoreChoice = req.query.shoreChoice
+  let answer = canoeToShore(shoreChoice);
+  res.send(`${answer}.`);
+  console.log(answer);
 });
 
 app.get('/onTheWater', (req, res) => {
