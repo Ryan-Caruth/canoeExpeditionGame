@@ -107,7 +107,7 @@ function navigateTheLake(location) {
 // //Decision tree on where to run river
 function riverDirectionChoice(direction) {
   if (direction === "left" || direction ==="Left") {
-    return "This piece a piece of cake. I could navigate this passage with my eyes closed";
+    return "This is a piece of cake. I could navigate this passage with my eyes closed. Please go here to see what happens next: curl http://localhost:5000/collisionOnRock";
   } else if (direction === "right" || direction ==="Right") {
     return `I'm sorry ${giveName.name} and ${randomName}, a terrible decision is leading you over a waterfall. This is a fatal fall. Would you like to play again?`;
   } else if (direction === "middle" || direction === "Middle" ) {
@@ -117,12 +117,36 @@ function riverDirectionChoice(direction) {
   }
 }
 
+//Function for what to do when capsized
+function inWaterDecision(option, paddle) {
+  if (option === "grab" || option === "Grab") {
+    if (paddle === "shore" || paddle === "Shore") {
+      return `You guys were able to get back in the canoe and paddle to shore`;
+    } else if (paddle === "continue" || paddle === "Continue") {
+      return `You guys are troopers for carrying on soaked`;
+    } else
+      return `Invalid entry`;
+  } else if (option === "land" || option === "Land") {
+    if (paddle === "abandoned" || paddle === "Abandoned") {
+      return `You guys chose to swim to shore and abandon the canoe. Now there is no more option for self-rescue.`
+    } else {
+      return `Invalid entry`;
+  }
+  } else {
+      return `Invalid entry`;
+  }
+}
+
+
+
+
+
 //front of canoe communicate with back of canoe
 function doTheyCommunicate(talking) {
   if (talking === "yes" || talking === "Yes") {
     return "You guys successfully manover around the hazard. Please go to this link to continue the story: curl http://localhost:5000/madeItToSite";
   } else if (talking === "no" || talking === "No") {
-    return "Bang!! Canoe hits a log in the water and taco's, all of your camping supplies are either at the bottom of the river or swept away";
+    return "Bang!! Canoe hits a log in the water and taco's, all of your camping supplies are either at the bottom of the river or swept away Please go here to see what happens next: curl http://localhost:5000/capsize";
   } else {
     return "Invalid choice, please enter {yes or no}";
   }
@@ -157,4 +181,4 @@ function thunderAndLightning(choice) {
     }
   }
 
- module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning, onShore };
+ module.exports = { giveName, randomName, chooseACanoe, navigateTheLake, riverDirectionChoice, doTheyCommunicate, thunderAndLightning, onShore, inWaterDecision };
