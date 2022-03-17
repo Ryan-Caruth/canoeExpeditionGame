@@ -5,6 +5,8 @@ const giveName = {
   name: " ",
 };
 
+let choice = "Invalid choice";
+
 let randomName = generateRandomName();
 
 //Create a function for creating an array for randomly generated name
@@ -89,7 +91,7 @@ function chooseACanoe(chooseCanoe) {
   } else if (chooseCanoe === "2") {
     return "Your choice is the Expedition Canoe. Early into your trip you guys come across some windy weather. Go to this link to learn how you guys navigate this lake: curl http://localhost:5000/onTheWater?location={Middle or Side}";
   } else {
-    return "Invalid choice, please enter {1 for Recreational Canoe or 2 for Expedition Canoe}";
+    return `${choice}, please enter {1 for Recreational Canoe or 2 for Expedition Canoe}.`;
   }
 }
 
@@ -100,7 +102,7 @@ function navigateTheLake(location) {
   } else if (location === "Side" || location ==="side") {
     return "Great choice!! Waves are really manageable near the shore. Lake soon narrows into a river with three directions. Which way do you go? curl http://localhost:5000/onTheRiver?direction={Enter left, right or middle}";
   } else {
-    return "Invalid choice, please enter {Middle or Side}";
+    return ` ${choice}, please enter {Middle or Side}.`;
   }
 }
 
@@ -111,9 +113,9 @@ function riverDirectionChoice(direction) {
   } else if (direction === "right" || direction ==="Right") {
     return `I'm sorry ${giveName.name} and ${randomName}, a terrible decision is leading you over a waterfall. This is a fatal fall. Would you like to play again?`;
   } else if (direction === "middle" || direction === "Middle" ) {
-    return "The canoe is manoevering well down this passage. Please go here to continue the story curl http://localhost:5000/hazard";
+    return "The canoe is manoevering well down this passage. Please go here to continue the story: curl http://localhost:5000/hazard";
   } else {
-    return "Invalid choice, please enter {left, right or middle}";
+    return `${choice}, please enter {left, right or middle}.`;
   }
 }
 
@@ -125,15 +127,15 @@ function inWaterDecision(option, paddle) {
     } else if (paddle === "continue" || paddle === "Continue") {
       return `You guys are troopers for carrying on soaked. Please click here to determine what's next: curl http://localhost:5000/continueSoaked`;
     } else
-      return `Invalid entry`;
+      return `${choice}, please enter {option=grab or land, paddle=shore, continue or abandoned}.`;
   } else if (option === "land" || option === "Land") {
     if (paddle === "abandoned" || paddle === "Abandoned") {
-      return `You guys choose to swim to shore and abandon the canoe. Now there is no more option for self-rescue. Please click this link to see what happens next: curl http://localhost:5000/choiceOnShore?survive={find or shore}`;
+      return `You guys choose to swim to shore and abandon the canoe. Now there is no more option for self-rescue. Please click this link to see what happens next: curl http://localhost:5000/choiceOnShore?survive={find or shore}.`;
     } else {
-      return `Invalid entry`;
+      return `${choice}, please enter {option=grab or land, paddle=shore, continue or abandoned}.`;
   }
   } else {
-      return `Invalid entry`;
+      return `${choice}, please enter {option=grab or land, paddle=shore, continue or abandoned}.`;
   }
 }
 
@@ -143,7 +145,7 @@ function canoeToShore(shoreChoice) {
   } else if (shoreChoice === "Go" || shoreChoice === "go") {
     return "You guys decided to push on despite being cold and wet. Please click here to find out what happens next: curl http://localhost:5000/continueSoaked";
   } else {
-    return "Invalid answer. Please enter {stay or choice}"
+    return `${choice}. Please enter {stay or choice}.`;
   }
 }
 
@@ -154,7 +156,7 @@ function doTheyCommunicate(talking) {
   } else if (talking === "no" || talking === "No") {
     return "Bang!! Canoe hits a log in the water and taco's, all of your camping supplies are either at the bottom of the river or swept away Please go here to see what happens next: curl http://localhost:5000/capsize";
   } else {
-    return "Invalid choice, please enter {yes or no}";
+    return `${choice}, please enter {yes or no}.`;
   }
 }
 
@@ -165,7 +167,7 @@ function onShore(survive) {
   } else if (survive ==="shore" || survive ==="Shore") {
     return "Cold, bruised and no food, you guys wait on shore for other canoers to spot you. The end. Play again?"
   } else {
-    return "Invalid choice, please enter {find of shore}"
+    return `${choice}, please enter {find of shore}.`
   }
 }
 
@@ -183,7 +185,7 @@ function thunderAndLightning(choice) {
   } else if (choice === "wait" || choice === "Wait") {
       return `Smart choice, within one hour the storm stopped. The lake became very flat and still, perfect for a paddle. Please click this link to see what happens next: http://localhost:5000/hooray `
   } else {
-      return "Invalid chioce, please enter {wait or go}";
+      return `${choice}, please enter {wait or go}.`;
     }
 }
 
@@ -194,7 +196,7 @@ function trueOrFalse(knowledge) {
   } else if (knowledge === "false" || knowledge === "False") {
     return `Correct!! ${giveName.name} and ${randomName}, you too a strong willed and were able to canoe the whole circuit. You win! Would you like to play again?`;
   } else {
-    return `Invalid answer, please enter {true or false}`;
+    return `${choice}, please enter {true or false}.`;
   }
 }
 
