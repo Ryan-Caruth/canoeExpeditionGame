@@ -9,6 +9,13 @@ let choice = "Invalid choice";
 
 let randomName = generateRandomName();
 
+//Start game function
+function startGame() {
+  return `Welcome to 'Canadian eh', a game that will test your instincts in a canoe.
+   Please copy this link and paste in your terminal to continue: 
+   curl http://localhost:5000/giveName?name={Enter your name here}.`;
+};
+
 //Create a function for creating an array for randomly generated name
 function generateRandomName() {
   let namesList = [
@@ -83,8 +90,8 @@ function generateRandomName() {
   let randomIndex = Math.floor(numOfNames * Math.random());
   return namesList[randomIndex];
 }
-//Let the usere choose a canoe
 
+//Let the usere choose a canoe
 function chooseACanoe(chooseCanoe) {
   if (chooseCanoe === "1") {
     return "Your choice is the Recreational Canoe. Early into your trip you guys come across some windy weather. Go to this link to learn how you guys navigate this lake: curl http://localhost:5000/onTheWater?location={Middle or Side}";
@@ -201,6 +208,7 @@ function trueOrFalse(knowledge) {
 }
 
 module.exports = {
+  startGame,
   giveName,
   randomName,
   chooseACanoe,

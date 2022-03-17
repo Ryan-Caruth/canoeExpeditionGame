@@ -1,6 +1,8 @@
 const express = require("express");
 const res = require("express/lib/response");
-const { giveName,
+const {
+  startGame,
+  giveName,
   randomName,
   chooseACanoe,
   navigateTheLake,
@@ -10,7 +12,7 @@ const { giveName,
   onShore,
   inWaterDecision,
   canoeToShore,
-  trueOrFalse } = require('./index');
+  trueOrFalse } = require('./model/index');
 
 const app = express();
 
@@ -23,25 +25,26 @@ const PORT = 5000;
 app.listen(PORT, echoPortNumber);
 
 app.get('/startGame', (req, res) => {
-    res.send(
-      "Welcome to 'Canadian eh', a game that will test your instincts in a canoe. Please copy this link and paste in your terminal to continue curl http://localhost:5000/giveName?name={Enter your name here}."
-    );
+  let startMessage = startGame();
+  res.send(`${startMessage}`);
 });
 
 app.get('/giveName', (req, res) => {
     let name = req.query.name;
     giveName.name = name;
     res.send(
-      `Hello ${name}. Please go to this link to find out who your canoe partner is curl http://localhost:5000/generatedName.`
+      `Hello ${name}. 
+      Please go to this link to find out who your canoe partner is curl http://localhost:5000/generatedName.`
     );
     console.log(name);
 });
 
 app.get('/generatedName', (req, res) => {
-  res.send(`Your canoe partner for this trip is ${randomName}. Please go to this link to decide what canoe to have curl http://localhost:5000/canoeChoice?chooseCanoe={1-Recreational Canoe, 2-Expedition Canoe}`);
+  res.send(`Your canoe partner for this trip is ${randomName}. 
+  Please go to this link to decide what canoe to have
+  curl http://localhost:5000/canoeChoice?chooseCanoe={1-Recreational Canoe, 2-Expedition Canoe}`);
   console.log(`${randomName}`);
 });
-
 
 app.get('/canoeChoice', (req, res) => {
     let chooseCanoe = req.query.chooseCanoe;
@@ -150,6 +153,6 @@ app.get('/doWeRiskIt', (req, res) => {
   console.log(answer);
 })
 
-app.get('/hooray', (req, res) => {
-  res.send(`Congrats you guy's have made it out. Now go celebrate at the pub.`);
-})
+  app.get('/hooray', (req, res) => {
+    res.send(`Congrats you guy's have made it out. Now go celebrate at the pub.`);
+  });
