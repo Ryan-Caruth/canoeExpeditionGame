@@ -8,6 +8,7 @@ const {
   navigateTheLake,
   riverDirectionChoice,
   collisionOnRock,
+  hazardUpAhead, 
   doTheyCommunicate,
   thunderAndLightning,
   onShore,
@@ -108,12 +109,12 @@ app.get('/inWater', (req, res) => {
 
 app.get('/collisionOnRock', (req, res) => {
   let collideWithRock = collisionOnRock();
-  res.send(collideWithRock);
+  res.send(`${collideWithRock}`);
 });
 
 app.get('/hazard', (req, res) => {
-  res.send(`Uh oh, ${randomName}, who is sitting in the front of the canoe sees a hazard up ahead. Do they communicate with ${giveName.name}?
-          Please go here to answer the question. curl http://localhost:5000/communicateWithStern?talking={enter yes or no}`);
+  let hazardInWater = hazardUpAhead()
+  res.send(`${hazardInWater}`);
 });
 
 app.get('/communicateWithStern', (req, res) => {

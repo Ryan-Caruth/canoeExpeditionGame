@@ -133,6 +133,13 @@ function collisionOnRock() {
    curl http://localhost:5000/inWater?option={grab or land}&paddle={shore, continue or abandoned}`;
 }
 
+//Function for seeing a hazard up ahead
+function hazardUpAhead() {
+  return `Uh oh, ${randomName}, who is sitting in the front of the canoe sees a hazard up ahead. 
+  Do they communicate with ${giveName.name}? Please go here to answer the question. 
+  curl http://localhost:5000/communicateWithStern?talking={enter yes or no}`;
+}
+
 //Function for what to do when capsized
 function inWaterDecision(option, paddle) {
   if (option === "grab" || option === "Grab") {
@@ -222,6 +229,7 @@ module.exports = {
   navigateTheLake,
   riverDirectionChoice,
   collisionOnRock, 
+  hazardUpAhead, 
   doTheyCommunicate,
   thunderAndLightning,
   onShore,
