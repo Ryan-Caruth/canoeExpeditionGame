@@ -10,12 +10,19 @@ const {
   collisionOnRock,
   hazardUpAhead, 
   doTheyCommunicate,
-  fallInWater, 
+  arriveAtSite,
+  nextDay,
+  fallInWater,
   thunderAndLightning,
   onShore,
   inWaterDecision,
+  continueSoaked,
+  hypoQuestion,
   canoeToShore,
-  trueOrFalse } = require('./model/index');
+  trueOrFalse, 
+  waitOnShore,
+  congrats,
+  canoePartner} = require('./model/index');
 
 const app = express();
 
@@ -43,9 +50,8 @@ app.get('/giveName', (req, res) => {
 });
 
 app.get('/generatedName', (req, res) => {
-  res.send(`Your canoe partner for this trip is ${randomName}. 
-  Please go to this link to decide what canoe to have
-  curl http://localhost:5000/canoeChoice?chooseCanoe={1-Recreational Canoe, 2-Expedition Canoe}`);
+  let partner = canoePartner();
+  res.send(`${partner}`);
   console.log(`${randomName}`);
 });
 
@@ -64,15 +70,13 @@ app.get('/canoeToShore', (req, res) => {
 });
 
 app.get('/continueSoaked', (req, res) => {
-  res.send(
-    "Time to pull off somewhere and call it a night. All your gear is gone and you guys are soaked so it will be a rough night. Please go here to answer a knowledge based question: http://localhost:5000/hypoQuestion"
-  );
+  let keepGoing = continueSoaked(); 
+  res.send(`${keepGoing}`);
 });
 
 app.get('/hypoQuestion', (req, res) => {
-  res.send(
-    "You can only develop hypothermia if the outside temperature is below freezing? Please go here to answer: http://localhost:5000/hypoAnswer?knowledge={true or false}"
-  );
+  let hypothermia = hypoQuestion();
+  res.send(`${hypothermia}`);
 });
 
 app.get('/hypoAnswer', (req, res) => {
@@ -83,7 +87,8 @@ app.get('/hypoAnswer', (req, res) => {
 })
 
 app.get('/waitOnshore', (req, res) => {
-  res.send(`Cold, bruised and no food you guys wait on shore for help. The end. Play again`);
+  let onShore = waitOnShore()
+  res.send(`${onShore}`);
 });
 
 app.get('/onTheWater', (req, res) => {
@@ -138,13 +143,13 @@ app.get('/choiceOnShore', (req, res) => {
 })
 
 app.get('/madeItToSite', (req, res) => {
-  res.send(`Hooray!! You too had a very successful day out on the water today. Now rest up at this campsite and leave bright and early tomorrow morning.
-          Please go to this link to see what happens next. curl http://localhost:5000/nextDay `)
+  let campsite = arriveAtSite();
+  res.send(`${campsite}`)
 })
 
 app.get('/nextDay', (req, res) => {
-  res.send(`Rise and shine time to hit the water. Uh oh you guys see thunder clouds rolling in. Do you risk it and go on the water on wait on land.
-          Please go to this link to answer the question: curl http://localhost:5000/doWeRiskIt?choice={enter wait or go}`);
+  let day = nextDay();
+  res.send(`${day}`);
 })
 
 app.get('/doWeRiskIt', (req, res) => {
@@ -154,6 +159,7 @@ app.get('/doWeRiskIt', (req, res) => {
   console.log(answer);
 })
 
-  app.get('/hooray', (req, res) => {
-    res.send(`Congrats you guy's have made it out. Now go celebrate at the pub.`);
+app.get('/hooray', (req, res) => {
+  let finished = congrats();
+    res.send(`${finished}`);
   });
