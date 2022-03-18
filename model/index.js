@@ -148,15 +148,15 @@ function inWaterDecision(option, paddle) {
     } else if (paddle === "continue" || paddle === "Continue") {
       return `You guys are troopers for carrying on soaked. Please click here to determine what's next: curl http://localhost:5000/continueSoaked`;
     } else
-      return `${choice}, please enter {option=grab or land, paddle=shore, continue or abandoned}.`;
+      return `${choice}, please enter {option=grab or land, paddle=shore, continue or {option=land, paddle = abandoned}.`;
   } else if (option === "land" || option === "Land") {
     if (paddle === "abandoned" || paddle === "Abandoned") {
       return `You guys choose to swim to shore and abandon the canoe. Now there is no more option for self-rescue. Please click this link to see what happens next: curl http://localhost:5000/choiceOnShore?survive={find or shore}.`;
     } else {
-      return `${choice}, please enter {option=grab or land, paddle=shore, continue or abandoned}.`;
+      return `${choice}, please enter {option=grab or land, paddle=shore, continue or {option=land, paddle = abandoned}.`;
   }
   } else {
-      return `${choice}, please enter {option=grab or land, paddle=shore, continue or abandoned}.`;
+      return `${choice}, please enter {option=grab or land, paddle=shore, continue or {option=land, paddle = abandoned}.`;
   }
 }
 
@@ -179,6 +179,13 @@ function doTheyCommunicate(talking) {
   } else {
     return `${choice}, please enter {yes or no}.`;
   }
+}
+//Create a function for capsizing after they hit the hazard
+function fallInWater() {
+  return `The two of you fall into the water and get swept underneath a log jam.
+    Fortunately the current lets go and you guys bob back up gasping for air and are able to swim to shore.
+    On the shore you have a decision to make on what to do next
+    Please go here to enter your answer: curl http://localhost:5000/choiceOnShore?survive={find or shore}`;
 }
 
 //Function for decision on shore 
@@ -231,6 +238,7 @@ module.exports = {
   collisionOnRock, 
   hazardUpAhead, 
   doTheyCommunicate,
+  fallInWater,
   thunderAndLightning,
   onShore,
   inWaterDecision,

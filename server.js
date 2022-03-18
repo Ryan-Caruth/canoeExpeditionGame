@@ -10,6 +10,7 @@ const {
   collisionOnRock,
   hazardUpAhead, 
   doTheyCommunicate,
+  fallInWater, 
   thunderAndLightning,
   onShore,
   inWaterDecision,
@@ -125,10 +126,8 @@ app.get('/communicateWithStern', (req, res) => {
 });
 
 app.get('/capsize', (req, res) => {
-  res.send(`The two of you fall into the water and get swept underneath a log jam.
-    Fortunately the current lets go and you guys bob back up gasping for air and are able to swim to shore.
-    On the shore you have a decision to make on what to do next
-    Please go here to enter your answer: curl http://localhost:5000/choiceOnShore?survive={find or shore}`)
+  let capsize = fallInWater();
+  res.send(`${capsize}`);
 })
 
 app.get('/choiceOnShore', (req, res) => {
