@@ -126,6 +126,13 @@ function riverDirectionChoice(direction) {
   }
 }
 
+//Function for colliding on rock and tipping over
+function collisionOnRock() {
+  return `Bang!! Canoe hits a log in the water and splits in half, all of your camping supplies are either at the bottom of the river
+   or swept away Please go here to see what happens next:
+   curl http://localhost:5000/inWater?option={grab or land}&paddle={shore, continue or abandoned}`;
+}
+
 //Function for what to do when capsized
 function inWaterDecision(option, paddle) {
   if (option === "grab" || option === "Grab") {
@@ -214,6 +221,7 @@ module.exports = {
   chooseACanoe,
   navigateTheLake,
   riverDirectionChoice,
+  collisionOnRock, 
   doTheyCommunicate,
   thunderAndLightning,
   onShore,
