@@ -11,7 +11,7 @@ let randomName = generateRandomName();
 
 //Start game function
 function startGame() {
-  return `Welcome to 'Canadian eh', a game that will test your instincts in a canoe.
+  return `Welcome to 'A weekend Getaway', a game that will test your instincts in a canoe.
    Please copy this link and paste in your terminal to continue: 
    curl http://localhost:5000/api/giveName?name={Enter your name here}.`;
 };
