@@ -108,7 +108,8 @@ function inWaterDecision(option, paddle) {
   } else if (option === "land" || option === "Land") {
     if (paddle === "abandoned" || paddle === "Abandoned") {
       return `You guys choose to swim to shore and abandon the canoe. Now there is no more option for self-rescue. 
-      Please click this link to see what happens next: curl "http://localhost:5000/api/choiceOnShore?survive=find or shore".`;
+      Please click this link to see what happens next: curl "http://localhost:5000/api/choiceOnShore?survive=find or shore"
+      Choose 'find' to venture into the wild to find civilization, choose 'shore' to stay on the shore and wait for help.`;
     } else {
       return `${wrong}, please enter {option=grab or land, paddle=shore, continue or {option=land, paddle = abandoned}.`;
   }
