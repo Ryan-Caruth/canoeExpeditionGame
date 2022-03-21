@@ -3,8 +3,6 @@ const router = express.Router();
 
 const {
   startGame,
-  giveName,
-  randomName,
   chooseACanoe,
   navigateTheLake,
   riverDirectionChoice,
@@ -24,6 +22,7 @@ const {
   waitOnShore,
   congrats,
   canoePartner,
+  gameStates,
 } = require("../model/index");
 
 router.get("/startGame", (req, res) => {
@@ -34,7 +33,7 @@ router.get("/startGame", (req, res) => {
 
 router.get("/giveName", (req, res) => {
   let name = req.query.name;
-  giveName.name = name;
+  gameStates.name = name;
   res.send(
     `Hello ${name}. 
       Please go to this link to find out who your canoe partner is curl "http://localhost:5000/api/generatedName".`
