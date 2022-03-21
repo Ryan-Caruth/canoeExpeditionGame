@@ -29,6 +29,7 @@ const {
 router.get("/startGame", (req, res) => {
   let startMessage = startGame();
   res.send(`${startMessage}`);
+  console.log(startMessage);
 });
 
 router.get("/giveName", (req, res) => {
@@ -44,7 +45,7 @@ router.get("/giveName", (req, res) => {
 router.get("/generatedName", (req, res) => {
   let partner = canoePartner();
   res.send(`${partner}`);
-  console.log(`${randomName}`);
+  console.log(partner);
 });
 
 router.get("/canoeChoice", (req, res) => {
@@ -64,11 +65,13 @@ router.get("/canoeToShore", (req, res) => {
 router.get("/continueSoaked", (req, res) => {
   let keepGoing = continueSoaked();
   res.send(`${keepGoing}`);
+  console.log(keepGoing);
 });
 
 router.get("/hypoQuestion", (req, res) => {
   let hypothermia = hypoQuestion();
   res.send(`${hypothermia}`);
+  console.log(hypothermia);
 });
 
 router.get("/hypoAnswer", (req, res) => {
@@ -81,6 +84,7 @@ router.get("/hypoAnswer", (req, res) => {
 router.get("/waitOnshore", (req, res) => {
   let onShore = waitOnShore();
   res.send(`${onShore}`);
+  console.log(onShore);
 });
 
 router.get("/onTheWater", (req, res) => {
@@ -102,17 +106,19 @@ router.get("/inWater", (req, res) => {
   let paddle = req.query.paddle;
   let answer = inWaterDecision(option, paddle);
   res.send(`${answer}`);
-  console.log(`${answer}`);
+  console.log(answer);
 });
 
 router.get("/collisionOnRock", (req, res) => {
   let collideWithRock = collisionOnRock();
   res.send(`${collideWithRock}`);
+  console.log(collideWithRock);
 });
 
 router.get("/hazard", (req, res) => {
   let hazardInWater = hazardUpAhead();
   res.send(`${hazardInWater}`);
+  console.log(hazardInWater);
 });
 
 router.get("/communicateWithStern", (req, res) => {
@@ -125,6 +131,7 @@ router.get("/communicateWithStern", (req, res) => {
 router.get("/capsize", (req, res) => {
   let capsize = fallInWater();
   res.send(`${capsize}`);
+  console.log(capsize);
 });
 
 router.get("/choiceOnShore", (req, res) => {
@@ -137,11 +144,13 @@ router.get("/choiceOnShore", (req, res) => {
 router.get("/madeItToSite", (req, res) => {
   let campsite = arriveAtSite();
   res.send(`${campsite}`);
+  console.log(campsite);
 });
 
 router.get("/nextDay", (req, res) => {
   let day = nextDay();
   res.send(`${day}`);
+  console.log(day);
 });
 
 router.get("/doWeRiskIt", (req, res) => {
@@ -154,6 +163,7 @@ router.get("/doWeRiskIt", (req, res) => {
 router.get("/hooray", (req, res) => {
   let finished = congrats();
   res.send(`${finished}`);
+  console.log(finished);
 });
 
 
