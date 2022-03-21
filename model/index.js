@@ -196,10 +196,12 @@ function fallInWater() {
 //Function for decision on shore 
 function onShore(survive) {
   if (survive === "find" || survive === "Find") {
-    return `Cold, bruised and no food, you start venturing into the woods in hopes of finding civilization. The end. Play again? 
+    return `Cold, bruised and no food, you start venturing into the woods in hopes of finding civilization. You have lost 10 XP.
+    You are at ${gameStates.XP -= 10} XP. The end....For now. Play again? 
     curl "http://localhost:5000/api/startGame"`;
   } else if (survive ==="shore" || survive ==="Shore") {
-    return `Cold, bruised and no food, you guys wait on shore for other canoers to spot you. The end. Play again? 
+    return `Cold, bruised and no food, you guys wait on shore for other canoers to spot you. You have lost 5 XP. 
+    You are at ${gameStates.XP -= 5} XP. The end....For now. Play again?
     curl "http://localhost:5000/api/startGame"`;
   } else {
     return `${wrong}, please enter {find of shore}.`
