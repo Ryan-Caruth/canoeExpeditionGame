@@ -36,7 +36,7 @@ router.get("/giveName", (req, res) => {
   giveName.name = name;
   res.send(
     `Hello ${name}. 
-      Please go to this link to find out who your canoe partner is curl http://localhost:5000/api/generatedName.`
+      Please go to this link to find out who your canoe partner is curl "http://localhost:5000/api/generatedName".`
   );
   console.log(name);
 });
