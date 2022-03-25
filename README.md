@@ -8,3 +8,5 @@ Instructions to play the game are as followed:
 3. Either use curl (curl http://localhost:5000/startGame) or the browser (localhost:5000/startGame)
 to play the game.
 4. Have fun exploring the possibilities!!
+
+This is the old choose your own adventure repositiory. I have archieved this. The new repository is canoe-adventure.
